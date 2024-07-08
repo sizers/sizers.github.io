@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Almaan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/jpeg" href="hero.jpg">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background-image: url('grid.png');
+            background-size: cover;
+        }
+
+        /* Top navigation styles */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .top-nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+        }
+
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #413151; /* Sample color */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #85418b; /* Sample color */
+            border-radius: 6px;
+            border: 3px solid #413151; /* Border color matches track */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #85418b; /* Sample hover color */
+        }
+
+
+        /* Main Container */
+        .container-box {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+        }
+
+        /* Fullscreen content box */
+        .fullscreen-box {
+            width: 70%;
+            min-height: 70vh;
+            margin: 3vh 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            background-color: rgba(103, 103, 103, 0.142);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(7px);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative; /* Added for positioning */
+        }
+
+        .fullscreen-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            border: 4px solid #b4b5ff;
+            background: linear-gradient(145deg, rgba(107, 83, 228, 0.099), rgba(118, 81, 228, 0.07));
+        }
+
+        /* Profile section */
+        .profile-section {
+            background-image: url('hero.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+        }
+
+        .circle-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 30px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 70px rgba(0, 0, 0, 0.33);
+        }
+
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        /* Section headings */
+        .section-heading {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left; /* Keep "Almaan" heading aligned left */
+        }
+
+        .centered-heading {
+            text-align: center; /* Center align other section headings */
+        }
+
+        /* Section paragraphs */
+        .section-paragraph {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        /* Awards section */
+        .awards-section {
+            width: 70%;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            background-color: rgba(103, 103, 103, 0.142);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(7px);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            flex-direction: column;
+            padding: 20px;
+            max-width: 100%; /* Added to limit the width */
+        }
+
+        .awards-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            border: 4px solid #b4b5ff;
+            background: linear-gradient(145deg, rgba(107, 83, 228, 0.099), rgba(118, 81, 228, 0.07));
+        }
+
+        .award-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .award-item {
+            width: 45%;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .award-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .award-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .award-item.centered {
+            width: 90%;
+        }
+
+        .award-heading {
+            font-size: 22px;
+            text-align: center; /* Center align the award headings */
+        }
+
+        /* Contact section */
+        #contact {
+            width: 70%; /* Ensure contact section matches other sections */
+            min-height: 70vh;
+            margin: 3vh 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            background-color: rgba(103, 103, 103, 0.142);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(7px);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative; /* Added for positioning */
+        }
+
+        #contact:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            border: 4px solid #b4b5ff;
+            background: linear-gradient(145deg, rgba(107, 83, 228, 0.099), rgba(118, 81, 228, 0.07));
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-box, .awards-section, #contact {
+                width: 100%;
+            }
+            .award-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Container Box -->
+    <div id="luxy" class="container-box">
+
+        <!-- Profile Section -->
+        <section id="profile" class="fullscreen-box profile-section">
+            <div class="profile-content">
+                <div class="circle-image">
+                    <img src="hero.jpg" alt="Almaan's Photo">
+                </div>
+                <div class="profile-info">
+                    <div class="section-heading">Almaan</div>
+                    <div class="section-paragraph">
+                        Hi there! I'm a 15-year-old kid who loves designing, video editing, photography, filmmaking, and anything else that lets me be creative. 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Work Section -->
+        <section id="mywork" class="fullscreen-box profile-section">
+            <div>
+                <div class="profile-info">
+                    <h2 class="section-heading centered-heading">My Work</h2>
+                    <p class="section-paragraph">Here are some of the projects I’ve worked on...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards" class="awards-section">
+            <div>
+                <div class="profile-info">
+                    <h2 class="section-heading centered-heading">Awards</h2>
+                    <div class="award-box">
+                        <div class="award-item">
+                            <h3 class="award-heading">Computer Whiz Kid - 2021-2022</h3>
+                            <p>Investitures, Indirapuram Public School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">First Prize - Digital Imaging</h3>
+                            <p>Technika '22<br>Cambridge School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">Second Prize - Graphix</h3>
+                            <p>Technika '23<br>Cambridge School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">First Prize - Digital Arts</h3>
+                            <p>Helios '24<br>Step by Step, Noida</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">First Prize - Digital Imaging</h3>
+                            <p>Silico Battles<br>Ahlcon Public School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">High Commendation - (Photography)</h3>
+                            <p>IPSMUN 8.0<br>Indirapuram Public School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">Head of Visual Media - Secretariat</h3>
+                            <p>IPSMUN 8.0<br>Indirapuram Public School</p>
+                        </div>
+                        <div class="award-item">
+                            <h3 class="award-heading">Computer Whiz Kid - 2022-2023</h3>
+                            <p>Investitures<br>Indirapuram Public School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="fullscreen-box profile-section">
+            <div>
+                <div class="profile-info">
+                    <h2 class="section-heading centered-heading">Wanna talk to me?</h2>
+                    <p class="section-paragraph">
+                        I do offer consultations! Mail me over here,
+                        <a href="mailto:almaanahmadaa@gmail.com" target="_blank" style="font-weight: bold; text-decoration: underline; color: white;">almaanahmadaa@gmail.com</a>.
+                        Consultation fees? None! No gain for me, no loss for you – it's a win-win! So, feel free to reach out and let's chat!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="https://min30327.github.io/luxy.js/dist/js/luxy.js"></script>
+    <script charset="utf-8">  
+     var isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+     if (!isMobile) {
+         luxy.init({
+            wrapper: '#luxy',
+            wrapperSpeed: 0.099,
+            
+        });
+     }
+ </script>
+
+</body>
+</html>
